@@ -70,13 +70,15 @@ public class Dealer extends Actor
     **/
     
     /* In this space write the pseudocode for your selection sort
-     * 
+     * Take the x and y positions of the 1st card in each row, then copmare their value to 
+     * the values of all the other cards in each row respectively using .getValue from the card class, then swap with each card 
+     * that has a lower value until the 1st card is at the right spot, then repeat.
      * 
      * 
      */
     private Card[] selectionSort(Card[] arr, int n)
     {
-        //put sort algorithm here
+        
         
         return selectionSort;
     }
