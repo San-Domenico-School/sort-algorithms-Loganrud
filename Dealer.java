@@ -31,6 +31,10 @@ public class Dealer extends Actor
     {
         showCards(world, shuffledDeck, 80);
         showCards(world, selectionSort(selectionSort, shuffledDeck.length), 220);
+        for (int i = 0; i < shuffledDeck.length; i ++)
+        {
+            world.addObject(shuffledDeck[i], 58 + 30 * i, 220);
+        }
         showCards(world, insertionSort(insertionSort, shuffledDeck.length), 360);
         showCards(world, mergeSort(mergeSort, shuffledDeck.length), 500);
     }    
@@ -70,17 +74,36 @@ public class Dealer extends Actor
     **/
     
     /* In this space write the pseudocode for your selection sort
-     * Take the x and y positions of the 1st card in each row, then copmare their value to 
-     * the values of all the other cards in each row respectively using .getValue from the card class, then swap with each card 
-     * that has a lower value until the 1st card is at the right spot, then repeat.
+     * Take the x and y positions of every card in each row, then copmare the 1st cards's 
+     * value to the values of all the other cards in each row respectively using .getValue 
+     * from the card class, then swap with each card that has a lower value until the 1st
+     * card is at the right spot, then repeat.
      * 
      * 
      */
     private Card[] selectionSort(Card[] arr, int n)
     {
+        for (int i = 0; i < n; i++)
+        {
+            int minIndex = i;
         
+            for (int j = i + 1; j < n; j++)
+            {
+                if (arr[j].getValue() < arr[minIndex].getValue())
+                {
+                    minIndex = j;
+                }
+            }
+            
+            if (minIndex != i)
+            {
+                Card temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+        }
         
-        return selectionSort;
+        return arr;
     }
     
     /* In this space write the pseudocode for your insertion sort
