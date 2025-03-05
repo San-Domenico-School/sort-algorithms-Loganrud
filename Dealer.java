@@ -31,9 +31,9 @@ public class Dealer extends Actor
     {
         showCards(world, shuffledDeck, 80);
         showCards(world, selectionSort(selectionSort, shuffledDeck.length), 220);
-        for (int i = 0; i < shuffledDeck.length; i ++)
+        //for (int i = 0; i < shuffledDeck.length; i ++)
         {
-            world.addObject(shuffledDeck[i], 58 + 30 * i, 220);
+            //world.addObject(shuffledDeck[i], 58 + 30 * i, 220);
         }
         showCards(world, insertionSort(insertionSort, shuffledDeck.length), 360);
         showCards(world, mergeSort(mergeSort, shuffledDeck.length), 500);
@@ -74,7 +74,7 @@ public class Dealer extends Actor
     **/
     
     /* In this space write the pseudocode for your selection sort
-     * Take the x and y positions of every card in each row, then copmare the 1st cards's 
+     *  copmare the 1st cards's 
      * value to the values of all the other cards in each row respectively using .getValue 
      * from the card class, then swap with each card that has a lower value until the 1st
      * card is at the right spot, then repeat.
@@ -83,19 +83,19 @@ public class Dealer extends Actor
      */
     private Card[] selectionSort(Card[] arr, int n)
     {
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) //loops through the deck
         {
-            int minIndex = i;
+            int minIndex = i; //assumes the current card is the smallest value
         
-            for (int j = i + 1; j < n; j++)
+            for (int j = i + 1; j < n; j++)// finds the smallest card in the unsorted deck
             {
                 if (arr[j].getValue() < arr[minIndex].getValue())
                 {
-                    minIndex = j;
+                    minIndex = j;//updates minIndex if a smaller value is found
                 }
             }
             
-            if (minIndex != i)
+            if (minIndex != i)//swaps the smallest card with the current card at i
             {
                 Card temp = arr[i];
                 arr[i] = arr[minIndex];
@@ -107,14 +107,29 @@ public class Dealer extends Actor
     }
     
     /* In this space write the pseudocode for your insertion sort
-     * 
+     * take the first element in the array and compare it to the one directly after it, 
+     * if the second one is of higher value, then the first card is in the right spot, 
+     * if the second card is higher, then compare the first card to the next one and so 
+     * on until it finds a lower value then insters into that part of the array, then 
+     * repeat for each card.
      * 
      * 
      */
     private Card[] insertionSort(Card[] arr, int n)
     {
+         for (int i = 0; i < n; i++)
+        {
+            Card currentIndex = arr[i];
+            int j = i - 1;
+            
+            while (j >= 0 && arr[j].getValue() > currentIndex.getValue())
+            {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = currentIndex;
+        }
         
-        //put sort algorithm here
         
         return insertionSort;
     }

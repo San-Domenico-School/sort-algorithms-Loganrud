@@ -29,7 +29,5 @@ public class Card extends Actor
     {
         return value;
     }
-    
-    
 
 }
